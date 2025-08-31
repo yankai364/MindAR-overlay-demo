@@ -11,31 +11,23 @@
 
       <!-- Camera -->
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-      <!-- Marker 1 -->
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane src="./2.png" height="1" width="1"></a-plane>
-      </a-entity>
-
-      <!-- Marker 2 -->
-      <a-entity mindar-image-target="targetIndex: 1">
-        <a-plane src="./4.png" height="1" width="1"></a-plane>
-      </a-entity>
-
-      <!-- Marker 3 -->
-      <a-entity mindar-image-target="targetIndex: 2">
-        <a-plane src="./6.png" height="1" width="1"></a-plane>
-      </a-entity>
-
-      <!-- Marker 4 -->
-      <a-entity mindar-image-target="targetIndex: 3">
-        <a-plane src="./8.png" height="1" width="1"></a-plane>
-      </a-entity>
-
-      <!-- Marker 5 -->
-      <a-entity mindar-image-target="targetIndex: 4">
-        <a-plane src="./10.png" height="1" width="1"></a-plane>
-      </a-entity>
     </a-scene>
+    <script>
+      // Generate targets for markers
+      const scene = document.querySelector('a-scene');
+  
+      for (let i = 0; i < 50; i++) {
+        const entity = document.createElement('a-entity');
+        entity.setAttribute('mindar-image-target', `targetIndex: ${i}`);
+  
+        const plane = document.createElement('a-plane');
+        plane.setAttribute('src', `./${(i+1)}-overlay.png`);
+        plane.setAttribute('height', '1');
+        plane.setAttribute('width', '1');
+  
+        entity.appendChild(plane);
+        scene.appendChild(entity);
+      }
+    </script>
   </body>
 </html>
